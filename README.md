@@ -1,7 +1,6 @@
-# Kataster Import
 Nástroj na konverziu a import grafických a popisných katastrálnych dát Slovenskej republiky do GIS.
 
-# Nasadenie
+## Nasadenie
 1. Vytvorenie Python *virtualenv* (virtuálne prostredie v podobe fyzického adresára, ktorý obsahuje unix-ovú štruktúru s binárkami, atď.)
 
 ```
@@ -34,9 +33,9 @@ Uloženie vstupných dát
    * adresár *vgi*                   - súbory VGI (grafické dáta KN)
    * adresár *dbf*,*fpu* alebo *fpt* - súbory DBF, resp. FPU, FPT (popisné dáta KN)
 
-# Použitie
+## Použitie
 
-## Konverzia všetkých dát
+### Konverzia všetkých dát
 **kt-sql**
 Skript slúži ako wrapper nad ostatnými špecializovanými nástrojmi a umožňuje vykonať konverziu SGI a SPI v jednom kroku. 
 
@@ -44,7 +43,7 @@ Skript slúži ako wrapper nad ostatnými špecializovanými nástrojmi a umož�
 $ kt-sql <hlavny-adresar>
 ```
 
-## Import dát do PostGIS
+### Import dát do PostGIS
 Dáta získané konverziou je možné importovať do PostGIS z vytvorených SQL súborov (adresár *data/sql*).
 
 * predpoklad, že už existuje user (napr. *ludka*, t.j. rovnako ako názov PC)
