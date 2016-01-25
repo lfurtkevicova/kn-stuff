@@ -31,8 +31,8 @@ $ source ./env-setup.sh
 Uloženie vstupných dát
  
  * hlavný adresár
-   * adresár *vgi*                   - súbory VGI (grafické dáta KN)
-   * adresár *dbf*, *fpu* alebo *fpt* - súbory DBF, resp. FPU, FPT (popisné dáta KN)
+   * adresár `vgi`                    - grafické dáta KN
+   * adresár `dbf`, `fpu` alebo `fpt` - popisné dáta KN
 
 ### Použitie
 
@@ -45,7 +45,7 @@ $ kt-sql <hlavny-adresar>
 ```
 
 #### Import dát do PostGIS
-Dáta získané konverziou je možné importovať do PostGIS z vytvorených SQL súborov (adresár *<hlavny-adresar>/sql*). Predpokladá sa, že už existuje **user** (napr. *ludka*, t.j. rovnako ako názov PC).
+Dáta získané konverziou je možné importovať do PostGIS z vytvorených SQL súborov - adresár *<hlavny-adresar>/sql*. Predpokladá sa, že už existuje **user**, napr. *ludka*, t.j. rovnako ako názov PC.
 
 * prihlásenie do databázy *postgres*, výpis zoznamu databáz a vytvorenie databázy *kataster*, prepnutie sa do novej databázy
 
@@ -56,7 +56,7 @@ $ createdb kataster;
 $ \connect kataster;
 ```
 
-* vytvorenie geodatabázy z databázy *kataster*, rozšírenie pre topologické vektorové dáta, upgrade na vyššiu verziu PostGIS, pridanie vlastného súradnicového systému do tabuľky *spatial_ref_sys* (napr. 5514)
+* vytvorenie geodatabázy z databázy *kataster*, rozšírenie pre topologické vektorové dáta, upgrade na vyššiu verziu PostGIS, pridanie vlastného súradnicového systému do tabuľky *spatial_ref_sys*, napr. 5514
 
 ```
 $ CREATE EXTENSION postgis;
@@ -66,8 +66,7 @@ $ wget http://epsg.io/5514.sql
 $ psql -f 5514.sql kataster
 ```
 
-* spustenie skriptu *kt-vytvor_db* (vytvorí schému *kataster*), pridanie dát
-z `*.sql` súborov `popisne_udaje.sql` a `graficke_udaje.sql`
+* spustenie skriptu *kt-vytvor_db*, ktorý vytvorí schému *kataster*; pridanie dát z `*.sql` súborov `popisne_udaje.sql` a `graficke_udaje.sql`
 
 ```
 $ psql kataster;
