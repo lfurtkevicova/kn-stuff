@@ -32,7 +32,7 @@ $ source ./env-setup.sh
 
 ### Uloženie vstupných dát
 
-* hlavný adresár
+* hlavný adresár obsahuje
   * adresár `vgi`                    - grafické dáta KN
   * adresár `dbf`, `fpu` alebo `fpt` - popisné dáta KN
 
