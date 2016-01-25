@@ -1,4 +1,6 @@
-Ide o nástroj na konverziu a import grafických a popisných katastrálnych dát Slovenskej republiky do GIS.
+## Kataster nástroj pre GIS
+
+Ide o nástroj na konverziu a import grafických a popisných katastrálnych dát Slovenskej republiky do GIS (Ivanov a spol). Popis dát KN je na https://github.com/lfurtkevicova/hn-stuff/wiki.
 
 ### Nasadenie
 * vytvorenie Python *virtualenv* (virtuálne prostredie v podobe fyzického adresára, ktorý obsahuje unix-ovú štruktúru s binárkami, atď.)
@@ -85,8 +87,3 @@ psql kataster
 drop schema kataster cascade;
 \q
 ```
-
-### Popis dát
-
-* grafické dáta: 
-* popisné dáta: 
