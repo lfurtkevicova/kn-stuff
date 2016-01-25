@@ -1,14 +1,14 @@
 Ide o nástroj na konverziu a import grafických a popisných katastrálnych dát Slovenskej republiky do GIS.
 
 ### Nasadenie
-Vytvorenie Python *virtualenv* (virtuálne prostredie v podobe fyzického adresára, ktorý obsahuje unix-ovú štruktúru s binárkami, atď.)
+* vytvorenie Python *virtualenv* (virtuálne prostredie v podobe fyzického adresára, ktorý obsahuje unix-ovú štruktúru s binárkami, atď.)
 
 ```
 $ virtualenv --system-site-packages $HOME/venvs/kataster-import
 $ source $HOME/venvs/kataster-import/bin/activate
 ```
 
-Inštalácia pomocou *setup.py*
+* inštalácia pomocou *setup.py*
 
 ```
 $ git clone https://github.com/imincik/kataster-import.git
@@ -17,7 +17,7 @@ $ python ./setup.py install
 $ pip install -r requirements.txt
 ````
 
-bez inštalácie
+* bez inštalácie
 
 ```
 $ git clone https://github.com/imincik/kataster-import.git
@@ -26,13 +26,11 @@ $ pip install -r requirements.txt
 $ source ./env-setup.sh
 ```
 
-### Požiadavky
+### Uloženie vstupných dát
 
-Uloženie vstupných dát
- 
- * hlavný adresár
-   * adresár `vgi`                    - grafické dáta KN
-   * adresár `dbf`, `fpu` alebo `fpt` - popisné dáta KN
+* hlavný adresár
+  * adresár `vgi`                    - grafické dáta KN
+  * adresár `dbf`, `fpu` alebo `fpt` - popisné dáta KN
 
 ### Použitie
 
