@@ -1,7 +1,7 @@
 Nástroj na konverziu a import grafických a popisných katastrálnych dát Slovenskej republiky do GIS.
 
 ## Nasadenie
-### vytvorenie Python *virtualenv* (virtuálne prostredie v podobe fyzického adresára, ktorý obsahuje unix-ovú štruktúru s binárkami, atď.)
+Vytvorenie Python *virtualenv* (virtuálne prostredie v podobe fyzického adresára, ktorý obsahuje unix-ovú štruktúru s binárkami, atď.)
 
 ```
 $ virtualenv --system-site-packages $HOME/venvs/kataster-import
