@@ -30,7 +30,7 @@ tags=cadastre, import, postgis, geodesy, parcels
 
 homepage=https://github.com/lfurtkevicova/kn-stuff
 category=Plugins
-icon=icons/icon.png
+icon=icon.png
 # experimental flag
 experimental=True
 
