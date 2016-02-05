@@ -1,0 +1,15 @@
+*~
+*.bak
+*.db
+*.dbf
+*.DBF
+*.fpt
+*.old
+*.pyc
+*.shp
+*.tmp
+*.vgi
+*.VGI
+*.shx
+tmp
+build
