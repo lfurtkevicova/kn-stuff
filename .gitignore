@@ -13,3 +13,4 @@
 *.shx
 tmp
 build
+skkn_tool/*.pyc
