@@ -46,7 +46,7 @@ PY_FILES = \
 	__init__.py \
 	skkn_tool.py skkn_tool_dialog.py
 
-UI_FILES = skkn_tool_dialog_base.ui
+UI_FILES = skkn_tool_dialog.ui
 
 EXTRAS = metadata.txt icon.png
 
