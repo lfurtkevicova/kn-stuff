@@ -26,7 +26,7 @@ import os
 from PyQt4 import QtGui, uic
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'skkn_tool_dialog_base.ui'))
+    os.path.dirname(__file__), 'skkn_tool_dialog.ui'))
 
 
 class skkn_toolDialog(QtGui.QDialog, FORM_CLASS):
