@@ -185,7 +185,7 @@
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;An existing database is required.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;An existing &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;database&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt; is required.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget_4">
@@ -291,7 +291,7 @@ Schema</string>
        <x>10</x>
        <y>10</y>
        <width>370</width>
-       <height>201</height>
+       <height>211</height>
       </rect>
      </property>
      <property name="title">
@@ -301,7 +301,7 @@ Schema</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>30</y>
+        <y>40</y>
         <width>351</width>
         <height>29</height>
        </rect>
@@ -348,7 +348,7 @@ Schema</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>100</y>
+        <y>110</y>
         <width>351</width>
         <height>22</height>
        </rect>
@@ -374,7 +374,7 @@ Schema</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>70</y>
+        <y>80</y>
         <width>351</width>
         <height>23</height>
        </rect>
@@ -395,10 +395,23 @@ Schema</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>130</y>
+        <y>140</y>
         <width>351</width>
         <height>60</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>351</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;Directory with  '&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;dbf&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;'  and  '&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;vgi&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;'  subfolders.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>

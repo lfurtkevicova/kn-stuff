@@ -28,10 +28,7 @@ import resources
 from skkn_tool_dialog import skkn_toolDialog
 import os.path
 
-from qgis.core import *
 from db_manager.db_plugins import createDbPlugin
-from db_manager.dlg_db_error import DlgDbError
-
 
 class skkn_tool:
 
@@ -133,7 +130,7 @@ class skkn_tool:
         del self.toolbar
 
     def select_data(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","")
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","/home/ludka/Desktop/data")
         self.dlg.lineData.setText(foldername)
 
     def db_changed(self,index): 
@@ -153,25 +150,15 @@ class skkn_tool:
         # add connections to combobox       
         self.dlg.comboBox_2.clear()        
         dbpluginclass = createDbPlugin('postgis')
-        # print MESSAGE LOG
-        # QgsMessageLog.logMessage(str(dbpluginclass),level=QgsMessageLog.INFO)
         
         connection_list = []
-        QgsMessageLog.logMessage("Ahoj",level=QgsMessageLog.INFO)
         self.dbconnections = dbpluginclass.connections()
         for c in self.dbconnections:
                 connection_list.append(unicode(c.connectionName()))
-                QgsMessageLog.logMessage(str(c),level=QgsMessageLog.INFO)                
-                c.connect()     
-                for schema in c.database().schemas():
-                    QgsMessageLog.logMessage(str(schema.name),level=QgsMessageLog.INFO)
+                c.connect()            
+        
         self.dlg.comboBox_2.addItems(connection_list)
         dbpluginclass.typeName()
-#        db = unicode(self.dlg.comboBox_2.currentText())
-#        schema_list = []
-#        for s in db.schema():
-#            schema_list.append(unicode(s.schemaName()))                     
-#        self.dlg.comboBox_3.addItems(schema_list)
         
         # show the dialog
         self.dlg.show()
