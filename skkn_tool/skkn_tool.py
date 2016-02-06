@@ -21,7 +21,7 @@
  ***************************************************************************/
 """
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon
+from PyQt4.QtGui import QAction, QIcon, QFileDialog
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
@@ -29,7 +29,6 @@ from skkn_tool_dialog import skkn_toolDialog
 import os.path
 
 from qgis.core import *
-from db_manager.db_plugins.plugin import DBPlugin, Schema, Table, BaseError
 from db_manager.db_plugins import createDbPlugin
 from db_manager.dlg_db_error import DlgDbError
 
@@ -64,6 +63,18 @@ class skkn_tool:
         # TODO: We are going to let the user set this up in a future iteration
         self.toolbar = self.iface.addToolBar(u'skkn_tool')
         self.toolbar.setObjectName(u'skkn_tool')
+
+        # SGI
+        self.dlg.lineSGI.clear()
+        self.dlg.buttonSGI.clicked.connect(self.select_SGI)
+        
+        # SGI
+        self.dlg.lineSPI.clear()
+        self.dlg.buttonSPI.clicked.connect(self.select_SPI)
+
+        # vystup
+        self.dlg.lineEdit.clear()
+        self.dlg.toolButton.clicked.connect(self.select_output_folder)
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -127,9 +138,19 @@ class skkn_tool:
         # remove the toolbar
         del self.toolbar
 
+    def select_SGI(self):
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SGI data","")
+        self.dlg.lineSGI.setText(foldername)
+        
+    def select_SPI(self):
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SPI data","")
+        self.dlg.lineSPI.setText(foldername)
+
+    def select_output_folder(self):
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select output folder ","")
+        self.dlg.lineEdit.setText(foldername)
 
     def run(self):
-        """Run method that performs all the real work"""
 
         # add connections to combobox       
         dbpluginclass = createDbPlugin('postgis')
@@ -138,8 +159,11 @@ class skkn_tool:
                 connection_list.append(unicode(c.connectionName()))
         self.dlg.comboBox_2.addItems(connection_list)
         
-                
-        
+#        db = unicode(self.dlg.comboBox_2.currentText())
+#        schema_list = []
+#        for s in db.schema():
+#            schema_list.append(unicode(s.schemaName()))                     
+#        self.dlg.comboBox_3.addItems(schema_list)
         
         # show the dialog
         self.dlg.show()
