@@ -28,6 +28,11 @@ import resources
 from skkn_tool_dialog import skkn_toolDialog
 import os.path
 
+from qgis.core import *
+from db_manager.db_plugins.plugin import DBPlugin, Schema, Table, BaseError
+from db_manager.db_plugins import createDbPlugin
+from db_manager.dlg_db_error import DlgDbError
+
 
 class skkn_tool:
 
@@ -125,6 +130,17 @@ class skkn_tool:
 
     def run(self):
         """Run method that performs all the real work"""
+
+        # add connections to combobox       
+        dbpluginclass = createDbPlugin('postgis')
+        connection_list = []
+        for c in dbpluginclass.connections():
+                connection_list.append(unicode(c.connectionName()))
+        self.dlg.comboBox_2.addItems(connection_list)
+        
+                
+        
+        
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
