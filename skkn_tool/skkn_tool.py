@@ -139,15 +139,15 @@ class skkn_tool:
         del self.toolbar
 
     def select_SGI(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SGI data","")
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SGI data (*.vgi data)","")
         self.dlg.lineSGI.setText(foldername)
         
     def select_SPI(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SPI data","")
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SPI data (*.dbf data)","")
         self.dlg.lineSPI.setText(foldername)
 
     def select_output_folder(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select output folder ","")
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select output folder","")
         self.dlg.lineEdit.setText(foldername)
 
     def run(self):
