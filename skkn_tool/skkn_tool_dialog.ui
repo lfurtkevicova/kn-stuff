@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>412</width>
-    <height>363</height>
+    <width>792</width>
+    <height>353</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,8 +24,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>391</width>
-     <height>311</height>
+     <width>771</width>
+     <height>301</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -42,65 +42,65 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>389</width>
-      <height>309</height>
+      <width>769</width>
+      <height>299</height>
      </rect>
     </property>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="dataBase">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>10</y>
+       <x>390</x>
+       <y>20</y>
        <width>370</width>
-       <height>181</height>
+       <height>271</height>
       </rect>
      </property>
      <property name="locale">
       <locale language="Slovak" country="Slovakia"/>
      </property>
      <property name="title">
-      <string>Databáza</string>
+      <string>Database</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignJustify|Qt::AlignTop</set>
      </property>
+     <widget class="QPushButton" name="importButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>171</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Import data to Schema</string>
+      </property>
+     </widget>
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>30</y>
+        <y>50</y>
         <width>351</width>
-        <height>81</height>
+        <height>62</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="text">
-          <string>Typ databázy</string>
-         </property>
-         <property name="indent">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
+       <item row="1" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Schéma</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Schema&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="indent">
           <number>5</number>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="0" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Spojenie</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Connection&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="indent">
           <number>5</number>
@@ -108,13 +108,6 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QComboBox" name="comboBox">
-         <property name="accessibleDescription">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
         <widget class="QComboBox" name="comboBox_2">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -127,31 +120,196 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="1" column="1">
         <widget class="QComboBox" name="comboBox_3"/>
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>120</y>
-        <width>351</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Importovať tabuľky</string>
-      </property>
-     </widget>
-     <widget class="QProgressBar" name="progressBar">
+     <widget class="QProgressBar" name="progressBar_2">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>150</y>
         <width>351</width>
-        <height>25</height>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEditDb">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>351</width>
+        <height>81</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deleteSchema">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>120</y>
+        <width>171</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete current Schema</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>351</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>true</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;supposed existing PostGIS database with same Schema&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="data">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>370</width>
+       <height>281</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Data</string>
+     </property>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>351</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayoutSGI">
+       <item>
+        <widget class="QLabel" name="textSGI">
+         <property name="text">
+          <string>SGI data</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineSGI"/>
+       </item>
+       <item>
+        <widget class="QToolButton" name="buttonSGI">
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>icons/open.png</normaloff>icons/open.png</iconset>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>351</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayoutSPI">
+       <item>
+        <widget class="QLabel" name="textSPI">
+         <property name="text">
+          <string>SPI data</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineSPI"/>
+       </item>
+       <item>
+        <widget class="QToolButton" name="buttonSPI">
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>icons/open.png</normaloff>icons/open.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>351</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayoutOut">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Outputs</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButton">
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>icons/open.png</normaloff>icons/open.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>351</width>
+        <height>22</height>
        </rect>
       </property>
       <property name="sizeIncrement">
@@ -161,17 +319,30 @@
        </size>
       </property>
       <property name="value">
-       <number>1</number>
+       <number>0</number>
       </property>
      </widget>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QPushButton" name="convertButton">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
+       <y>140</y>
+       <width>351</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Convert all data</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="textEditData">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
        <y>200</y>
-       <width>370</width>
-       <height>100</height>
+       <width>351</width>
+       <height>81</height>
       </rect>
      </property>
     </widget>
@@ -180,9 +351,9 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>330</y>
-     <width>341</width>
+     <x>660</x>
+     <y>320</y>
+     <width>121</width>
      <height>25</height>
     </rect>
    </property>
