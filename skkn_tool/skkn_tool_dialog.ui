@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>792</width>
-    <height>353</height>
+    <width>413</width>
+    <height>520</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,8 +24,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>771</width>
-     <height>301</height>
+     <width>391</width>
+     <height>461</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -42,17 +42,17 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>769</width>
-      <height>299</height>
+      <width>389</width>
+      <height>459</height>
      </rect>
     </property>
     <widget class="QGroupBox" name="dataBase">
      <property name="geometry">
       <rect>
-       <x>390</x>
-       <y>20</y>
+       <x>10</x>
+       <y>200</y>
        <width>370</width>
-       <height>271</height>
+       <height>251</height>
       </rect>
      </property>
      <property name="locale">
@@ -144,7 +144,7 @@
         <x>10</x>
         <y>180</y>
         <width>351</width>
-        <height>81</height>
+        <height>61</height>
        </rect>
       </property>
      </widget>
@@ -189,7 +189,7 @@
        <x>10</x>
        <y>10</y>
        <width>370</width>
-       <height>281</height>
+       <height>191</height>
       </rect>
      </property>
      <property name="title">
@@ -322,6 +322,11 @@
        <number>0</number>
       </property>
      </widget>
+     <zorder>horizontalLayoutWidget</zorder>
+     <zorder>horizontalLayoutWidget_2</zorder>
+     <zorder>horizontalLayoutWidget_3</zorder>
+     <zorder>progressBar</zorder>
+     <zorder>dataBase</zorder>
     </widget>
     <widget class="QPushButton" name="convertButton">
      <property name="geometry">
@@ -336,23 +341,13 @@
       <string>Convert all data</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEditData">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>200</y>
-       <width>351</width>
-       <height>81</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>320</y>
+     <x>270</x>
+     <y>480</y>
      <width>121</width>
      <height>25</height>
     </rect>
