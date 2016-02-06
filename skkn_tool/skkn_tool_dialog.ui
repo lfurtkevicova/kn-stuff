@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>413</width>
-    <height>540</height>
+    <height>537</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -53,9 +53,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>210</y>
+       <y>220</y>
        <width>370</width>
-       <height>261</height>
+       <height>251</height>
       </rect>
      </property>
      <property name="layoutDirection">
@@ -74,7 +74,7 @@
       <set>Qt::AlignJustify|Qt::AlignTop</set>
      </property>
      <property name="flat">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="checkable">
       <bool>false</bool>
@@ -163,7 +163,7 @@
         <x>10</x>
         <y>180</y>
         <width>351</width>
-        <height>71</height>
+        <height>60</height>
        </rect>
       </property>
      </widget>
@@ -172,7 +172,7 @@
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>351</width>
+        <width>161</width>
         <height>17</height>
        </rect>
       </property>
@@ -185,7 +185,7 @@
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;An existing database is required ...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;An existing database is required.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget_4">
@@ -291,7 +291,7 @@ Schema</string>
        <x>10</x>
        <y>10</y>
        <width>370</width>
-       <height>191</height>
+       <height>201</height>
       </rect>
      </property>
      <property name="title">
@@ -308,22 +308,22 @@ Schema</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayoutSGI">
        <item>
-        <widget class="QLabel" name="textSGI">
+        <widget class="QLabel" name="textData">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>SGI data</string>
+          <string>Select Folder</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineSGI"/>
+        <widget class="QLineEdit" name="lineData"/>
        </item>
        <item>
-        <widget class="QToolButton" name="buttonSGI">
+        <widget class="QToolButton" name="buttonData">
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
          </property>
@@ -344,87 +344,11 @@ Schema</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <widget class="QProgressBar" name="progressBarData">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>60</y>
-        <width>351</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayoutSPI">
-       <item>
-        <widget class="QLabel" name="textSPI">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>SPI data</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineSPI"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="buttonSPI">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>:/plugins/skkn_tool/icons/open.png</normaloff>:/plugins/skkn_tool/icons/open.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>351</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayoutOut">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Outputs</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButton">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>:/plugins/skkn_tool/icons/open.png</normaloff>:/plugins/skkn_tool/icons/open.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>160</y>
+        <y>100</y>
         <width>351</width>
         <height>22</height>
        </rect>
@@ -446,27 +370,37 @@ Schema</string>
        <number>0</number>
       </property>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="convertButton">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>140</y>
-       <width>351</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Convert all data</string>
-     </property>
+     <widget class="QPushButton" name="convertButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>351</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Convert all data</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEditData">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>351</width>
+        <height>60</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

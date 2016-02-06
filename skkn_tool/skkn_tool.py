@@ -64,17 +64,11 @@ class skkn_tool:
         self.toolbar = self.iface.addToolBar(u'skkn_tool')
         self.toolbar.setObjectName(u'skkn_tool')
 
-        # SGI
-        self.dlg.lineSGI.clear()
-        self.dlg.buttonSGI.clicked.connect(self.select_SGI)
+        # data
+        self.dlg.lineData.clear()
+        self.dlg.buttonData.clicked.connect(self.select_data)
         
-        # SGI
-        self.dlg.lineSPI.clear()
-        self.dlg.buttonSPI.clicked.connect(self.select_SPI)
-
-        # vystup
-        self.dlg.lineEdit.clear()
-        self.dlg.toolButton.clicked.connect(self.select_output_folder)
+        self.dlg.comboBox_2.currentIndexChanged.connect(self.db_changed)
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -138,27 +132,41 @@ class skkn_tool:
         # remove the toolbar
         del self.toolbar
 
-    def select_SGI(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SGI data (*.vgi data)","")
-        self.dlg.lineSGI.setText(foldername)
-        
-    def select_SPI(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select folder with SPI data (*.dbf data)","")
-        self.dlg.lineSPI.setText(foldername)
+    def select_data(self):
+        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","")
+        self.dlg.lineData.setText(foldername)
 
-    def select_output_folder(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select output folder","")
-        self.dlg.lineEdit.setText(foldername)
+    def db_changed(self,index): 
+        self.dlg.comboBox_3.clear()
+        self.dlg.comboBox_3.addItems(self.db_getSchema(index))
+
+    def db_getSchema(self,index):
+        schemas = []        
+        c = self.dbconnections[index]        
+        c.connect()     
+        for schema in c.database().schemas():
+                schemas.append(schema.name)
+        return schemas
 
     def run(self):
 
         # add connections to combobox       
+        self.dlg.comboBox_2.clear()        
         dbpluginclass = createDbPlugin('postgis')
-        connection_list = []
-        for c in dbpluginclass.connections():
-                connection_list.append(unicode(c.connectionName()))
-        self.dlg.comboBox_2.addItems(connection_list)
+        # print MESSAGE LOG
+        # QgsMessageLog.logMessage(str(dbpluginclass),level=QgsMessageLog.INFO)
         
+        connection_list = []
+        QgsMessageLog.logMessage("Ahoj",level=QgsMessageLog.INFO)
+        self.dbconnections = dbpluginclass.connections()
+        for c in self.dbconnections:
+                connection_list.append(unicode(c.connectionName()))
+                QgsMessageLog.logMessage(str(c),level=QgsMessageLog.INFO)                
+                c.connect()     
+                for schema in c.database().schemas():
+                    QgsMessageLog.logMessage(str(schema.name),level=QgsMessageLog.INFO)
+        self.dlg.comboBox_2.addItems(connection_list)
+        dbpluginclass.typeName()
 #        db = unicode(self.dlg.comboBox_2.currentText())
 #        schema_list = []
 #        for s in db.schema():
