@@ -68,10 +68,17 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>120</y>
+        <y>110</y>
         <width>171</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>Import data to Schema</string>
@@ -81,7 +88,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>50</y>
+        <y>40</y>
         <width>351</width>
         <height>62</height>
        </rect>
@@ -89,6 +96,11 @@
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="0">
         <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Schema&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -99,6 +111,11 @@
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Connection&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -129,10 +146,17 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>150</y>
+        <y>140</y>
         <width>351</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="value">
        <number>0</number>
@@ -142,9 +166,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>180</y>
+        <y>170</y>
         <width>351</width>
-        <height>61</height>
+        <height>71</height>
        </rect>
       </property>
      </widget>
@@ -152,10 +176,17 @@
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>120</y>
+        <y>110</y>
         <width>171</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>Delete current Schema</string>
@@ -179,7 +210,7 @@
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;supposed existing PostGIS database with same Schema&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt; font-style:italic;&quot;&gt;An existing database and database schema are required.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -207,6 +238,11 @@
       <layout class="QHBoxLayout" name="horizontalLayoutSGI">
        <item>
         <widget class="QLabel" name="textSGI">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>SGI data</string>
          </property>
@@ -224,8 +260,8 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>icons/open.png</normaloff>icons/open.png</iconset>
+          <iconset resource="resources.qrc">
+           <normaloff>:/plugins/skkn_tool/icons/open.png</normaloff>:/plugins/skkn_tool/icons/open.png</iconset>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -249,6 +285,11 @@
       <layout class="QHBoxLayout" name="horizontalLayoutSPI">
        <item>
         <widget class="QLabel" name="textSPI">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>SPI data</string>
          </property>
@@ -263,8 +304,8 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>icons/open.png</normaloff>icons/open.png</iconset>
+          <iconset resource="resources.qrc">
+           <normaloff>:/plugins/skkn_tool/icons/open.png</normaloff>:/plugins/skkn_tool/icons/open.png</iconset>
          </property>
         </widget>
        </item>
@@ -282,6 +323,11 @@
       <layout class="QHBoxLayout" name="horizontalLayoutOut">
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Outputs</string>
          </property>
@@ -296,8 +342,8 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>icons/open.png</normaloff>icons/open.png</iconset>
+          <iconset resource="resources.qrc">
+           <normaloff>:/plugins/skkn_tool/icons/open.png</normaloff>:/plugins/skkn_tool/icons/open.png</iconset>
          </property>
         </widget>
        </item>
@@ -318,15 +364,17 @@
         <height>0</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="value">
        <number>0</number>
       </property>
      </widget>
-     <zorder>horizontalLayoutWidget</zorder>
-     <zorder>horizontalLayoutWidget_2</zorder>
-     <zorder>horizontalLayoutWidget_3</zorder>
-     <zorder>progressBar</zorder>
-     <zorder>dataBase</zorder>
     </widget>
     <widget class="QPushButton" name="convertButton">
      <property name="geometry">
@@ -337,6 +385,14 @@
        <height>23</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
       <string>Convert all data</string>
      </property>
@@ -346,11 +402,16 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>280</x>
      <y>480</y>
      <width>121</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -360,7 +421,6 @@
    </property>
   </widget>
  </widget>
- <resources/>
  <connections>
   <connection>
    <sender>button_box</sender>
