@@ -21,14 +21,15 @@
  ***************************************************************************/
 """
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon, QFileDialog
+from PyQt4.QtGui import QAction, QIcon, QFileDialog, QMessageBox
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
 from skkn_tool_dialog import skkn_toolDialog
 import os.path
-
 from db_manager.db_plugins import createDbPlugin
+import subprocess
+
 
 class skkn_tool:
 
@@ -65,7 +66,14 @@ class skkn_tool:
         self.dlg.lineData.clear()
         self.dlg.buttonData.clicked.connect(self.select_data)
         
+        # database and schema
         self.dlg.comboBox_2.currentIndexChanged.connect(self.db_changed)
+
+        # conversation
+        self.dlg.buttonConvert.clicked.connect(self.convertData)
+        
+        # about message
+        self.dlg.buttonAbout.clicked.connect(self.showError)
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -130,8 +138,16 @@ class skkn_tool:
         del self.toolbar
 
     def select_data(self):
-        foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","/home/ludka/Desktop/data")
-        self.dlg.lineData.setText(foldername)
+        self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","/home/ludka/Desktop/data")
+        self.dlg.lineData.setText(self.foldername)
+
+    def convertData(self):
+        #self.dlg.textEditData.setText(self.foldername)
+
+        bashCommand = "source convert.sh"
+        os.system(bashCommand)
+        
+        #subprocess.call('source convert.sh')
 
     def db_changed(self,index): 
         self.dlg.comboBox_3.clear()
@@ -144,6 +160,13 @@ class skkn_tool:
         for schema in c.database().schemas():
                 schemas.append(schema.name)
         return schemas
+
+    def showError(self):
+        mes = QMessageBox.about(None,"About SKKN Plugin","This tool helps users to use Slovak land \
+registry data (cadastral data) in exchange formats created by The Geodesy, Cartography and \
+Cadastre Authority of Slovak republic, in QGIS. \nIt is only usefull and dedicated for processing \
+in Slovak republic for people having access to Cadastre data. \nThere is no reason to use it for \
+other purposes.")
 
     def run(self):
 
