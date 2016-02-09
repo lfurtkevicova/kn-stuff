@@ -11,10 +11,10 @@ name=SKKN tool
 qgisMinimumVersion=2.0
 description=This plugin helps users to use Slovak cadastral data.
 version=0.1
-author=Marcel Dancak, Ludmila Furtkevicova, Peter Hyben, Ivan Mincik
+author=Ludmila Furtkevicova
 email=ludmilafurtkevicov@gmail.com
 
-about=This tool helps users to use Slovak land registry data (cadastral data) in exchange formats created by The Geodesy, Cartography and Cadastre Authority of Slovak republic, in QGIS. It is only usefull and dedicated for processing in Slovak republic for people having access to Cadastre data. There is no reason to use it for other purposes.
+about=This tool helps users to use Slovak land registry data (cadastral data) in exchange formats created by The Geodesy, Cartography and Cadastre Authority of Slovak republic, in QGIS. Plugin is based on shell tool created by Marcel Dancak, Peter Hyben and Ivan Mincik, see https://github.com/imincik/kataster-import. It is only useful and dedicated for processing in Slovak republic for people having access to Cadastre data. There is no reason to use it for other purposes. 
 
 tracker=https://github.com/lfurtkevicova/kn-stuff/skkn_tool
 repository=https://github.com/lfurtkevicova/kn-stuff
