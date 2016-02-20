@@ -7,7 +7,7 @@
                              -------------------
         begin                : 2016-02-03
         git sha              : $Format:%H$
-        copyright            : (C) 2016 by Marcel Dancak, Ludmila Furtkevicova, Peter Hyben, Ivan Mincik
+        copyright            : (C) 2016 by Ludmila Furtkevicova
         email                : ludmilafurtkevicov@gmail.com
  ***************************************************************************/
 

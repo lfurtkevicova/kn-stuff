@@ -7,7 +7,7 @@
                               -------------------
         begin                : 2016-02-03
         git sha              : $Format:%H$
-        copyright            : (C) 2016 by Marcel Dancak, Ludmila Furtkevicova, Peter Hyben, Ivan Mincik
+        copyright            : (C) 2016 by Ludmila Furtkevicova
         email                : ludmilafurtkevicov@gmail.com
  ***************************************************************************/
 
@@ -20,7 +20,7 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QProcess
+from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QProcess, QTimer
 from PyQt4.QtGui import QAction, QIcon, QFileDialog, QMessageBox
 # Initialize Qt resources from file resources.py
 import resources
@@ -30,6 +30,7 @@ import os.path
 from db_manager.db_plugins import createDbPlugin
 from db_manager.db_plugins.plugin import DbError
 import subprocess
+import sys, time
 
 
 class skkn_tool:
@@ -72,13 +73,19 @@ class skkn_tool:
         self.dlg.comboBox_2.currentIndexChanged.connect(self.db_changed)
 
         # conversation
+        self.dlg.progressBarData.setMinimum(0)
+        self.dlg.progressBarData.setMaximum(100)
+        self._active = False
         self.dlg.buttonConvert.clicked.connect(self.convertData)
-        
+               
         # ukoncenie konverzie
-        self.dlg.buttonKill.clicked.connect(self.stopConvert)
+        self.dlg.buttonKill.clicked.connect(self.stopConvert) 
+        self.dlg.buttonKill.setEnabled(False)
         
         # about message
         self.dlg.buttonAbout.clicked.connect(self.showError)
+        
+        self.dlg.buttonClear.clicked.connect(self.clear)
         
         # nieco ako Popen, nativne pre Qt
         self.process = QProcess(self.dlg)
@@ -154,20 +161,30 @@ class skkn_tool:
         self.dlg.lineData.setText(self.foldername)
 
     def convertData(self):
-        #self.dlg.textEditData.setText(self.foldername)
-    
-        
-        # spustenie pomocou call a Popen
-        
+        #self.dlg.textEditData.setText(self.foldername)      
+        ## spustenie pomocou call a Popen     
         # subprocess.call([os.path.join(self.plugin_dir,'kataster-import','kt-sql'),self.foldername])
         # subprocess.Popen([os.path.join(self.plugin_dir,'kataster-import','kt-sql'),self.foldername],shell = True)
-        
-        self.process.start(os.path.join(self.plugin_dir,'kataster-import','kt-sql'),[self.foldername])
 
+        self.process.start(os.path.join(self.plugin_dir,'kataster-import','kt-sql'),[self.foldername])
+        self.dlg.buttonConvert.setText('Converting ...')
+        self.dlg.buttonKill.setEnabled(True)
+       
     #funkcia na zapisovanie do GUI okna, vola funkciu insertText    
     def writeData(self):
-        self.insertText(str(self.process.readAll()))
-             
+        text=str(self.process.readAll())
+        for line in text.splitlines(): 
+            if len(line)==0:
+                continue
+            if not line.startswith('PROGRESS'):            
+                self.insertText(line + os.linesep)
+            else:
+                try:                
+                    pvalue=int(line.split(':',1)[1].strip())
+                except:
+                    return                    
+                self.dlg.progressBarData.setValue(pvalue)
+        
     def insertText(self,text):
         cursor = self.dlg.textEditData.textCursor()
         cursor.movePosition(cursor.End)
@@ -176,7 +193,9 @@ class skkn_tool:
 
     def stopConvert(self):
         self.process.kill()
-        self.insertText('Conversation process killed!')
+        self.insertText('Killed!')
+        self.dlg.buttonKill.setEnabled(False)
+        self.dlg.progressBarData.setValue(0)
 
     def db_changed(self,index): 
         self.dlg.comboBox_3.clear()
@@ -215,6 +234,9 @@ registry data (cadastral data) in exchange formats created by The Geodesy, Carto
 Cadastre Authority of Slovak republic, in QGIS. \nIt is only usefull and dedicated for processing \
 in Slovak republic for people having access to Cadastre data. \nThere is no reason to use it for \
 other purposes.")
+
+    def clear(self): 
+            self.dlg.textEditData.clear()
 
     def run(self):
 

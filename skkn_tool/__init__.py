@@ -6,7 +6,7 @@
  This plugin helps users to use Slovak cadastral data.
                              -------------------
         begin                : 2016-02-03
-        copyright            : (C) 2016 by Marcel Dancak, Ludmila Furtkevicova, Peter Hyben, Ivan Mincik
+        copyright            : (C) 2016 by Ludmila Furtkevicova
         email                : ludmilafurtkevicov@gmail.com
         git sha              : $Format:%H$
  ***************************************************************************/
