@@ -56,7 +56,7 @@ class skkn_tool:
 
         # Create the dialog (after translation) and keep reference
         self.dlg = skkn_toolDialog()
-
+        
         # Declare instance attributes
         self.actions = []
         self.menu = self.tr(u'&SKKN tool')
@@ -66,10 +66,13 @@ class skkn_tool:
         self.toolbar.setObjectName(u'skkn_tool')
 
         # data
+        self.dlg.buttonConvert.setEnabled(False)        
         self.dlg.lineData.clear()
         self.dlg.buttonData.clicked.connect(self.select_data)
         
+        
         # database and schema
+        self.dlg.dataBase.setEnabled(False)
         self.dlg.comboBox_2.currentIndexChanged.connect(self.db_changed)
 
         # conversation
@@ -159,13 +162,18 @@ class skkn_tool:
     def select_data(self):
         self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","/home/ludka/Desktop")
         self.dlg.lineData.setText(self.foldername)
+        self.buttonConvertName()
+        self.dlg.buttonConvert.setEnabled(True)
+        self.dlg.progressBarData.setValue(0)
+        self.dlg.dataBase.setEnabled(False)
+        self.clear()
 
     def convertData(self):
         #self.dlg.textEditData.setText(self.foldername)      
         ## spustenie pomocou call a Popen     
         # subprocess.call([os.path.join(self.plugin_dir,'kataster-import','kt-sql'),self.foldername])
         # subprocess.Popen([os.path.join(self.plugin_dir,'kataster-import','kt-sql'),self.foldername],shell = True)
-
+        self.clear()
         self.process.start(os.path.join(self.plugin_dir,'kataster-import','kt-sql'),[self.foldername])
         self.dlg.buttonConvert.setText('Converting ...')
         self.dlg.buttonKill.setEnabled(True)
@@ -180,10 +188,15 @@ class skkn_tool:
                 self.insertText(line + os.linesep)
             else:
                 try:                
-                    pvalue=int(line.split(':',1)[1].strip())
+                    self.pvalue=int(line.split(':',1)[1].strip())
                 except:
                     return                    
-                self.dlg.progressBarData.setValue(pvalue)
+                self.dlg.progressBarData.setValue(self.pvalue)
+            if self.pvalue==100:
+                self.dlg.buttonConvert.setText('Conversation successfully completed')
+                self.dlg.buttonConvert.setEnabled(False)                
+                self.dlg.buttonKill.setEnabled(False)
+                self.dlg.dataBase.setEnabled(True)
         
     def insertText(self,text):
         cursor = self.dlg.textEditData.textCursor()
@@ -193,9 +206,14 @@ class skkn_tool:
 
     def stopConvert(self):
         self.process.kill()
-        self.insertText('Killed!')
+        self.clear()
+        self.insertText('Conversation interrupted!')
+        self.buttonConvertName()        
         self.dlg.buttonKill.setEnabled(False)
         self.dlg.progressBarData.setValue(0)
+
+    def buttonConvertName(self):
+        self.dlg.buttonConvert.setText('Convert all data')
 
     def db_changed(self,index): 
         self.dlg.comboBox_3.clear()
