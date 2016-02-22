@@ -29,7 +29,7 @@ from skkn_tool_dialog import skkn_toolDialog
 import os.path
 from db_manager.db_plugins import createDbPlugin
 from db_manager.db_plugins.plugin import DbError
-import subprocess
+from subprocess import call
 import sys, time
 
 
@@ -72,7 +72,7 @@ class skkn_tool:
         
         
         # database and schema
-        self.dlg.dataBase.setEnabled(False)
+        # self.dlg.dataBase.setEnabled(False)
         self.dlg.comboBox_2.currentIndexChanged.connect(self.db_changed)
 
         # conversation
@@ -93,6 +93,9 @@ class skkn_tool:
         # nieco ako Popen, nativne pre Qt
         self.process = QProcess(self.dlg)
         self.process.readyRead.connect(self.writeData)
+        
+        # vytvorenie schemy
+        self.dlg.buttonCreateSchema.clicked.connect(self.db_createSchema) 
         
         # vymazanie schemy
         self.dlg.buttonDelete.clicked.connect(self.db_deleteSchema)
@@ -156,7 +159,7 @@ class skkn_tool:
                 self.tr(u'&SKKN tool'),
                 action)
             self.iface.removeToolBarIcon(action)
-        # remove the toolbar
+        # remove the toolbarself.dlg.dataBase.setEnabled(False)
         del self.toolbar
 
     def select_data(self):
@@ -165,7 +168,7 @@ class skkn_tool:
         self.buttonConvertName()
         self.dlg.buttonConvert.setEnabled(True)
         self.dlg.progressBarData.setValue(0)
-        self.dlg.dataBase.setEnabled(False)
+        #self.dlg.dataBase.setEnabled(False)
         self.clear()
 
     def convertData(self):
@@ -197,7 +200,7 @@ class skkn_tool:
                 self.dlg.buttonConvert.setEnabled(False)                
                 self.dlg.buttonKill.setEnabled(False)
                 self.dlg.dataBase.setEnabled(True)
-        
+                      
     def insertText(self,text):
         cursor = self.dlg.textEditData.textCursor()
         cursor.movePosition(cursor.End)
@@ -217,6 +220,7 @@ class skkn_tool:
 
     def db_changed(self,index): 
         self.dlg.comboBox_3.clear()
+        self.clear()
         self.dlg.comboBox_3.addItems(self.db_getSchema(index))
 
     # naplnenie comboboxu schemami
@@ -232,6 +236,50 @@ class skkn_tool:
             schemas.append(schema.name)
         return schemas
     
+    # vytvorenie novej schemy kataster
+    def db_createSchema(self):
+        self.clear()        
+        db = self.dlg.comboBox_2.currentText() 
+        sch = self.dlg.comboBox_3.currentText()
+        if not sch =='kataster': 
+            s = os.path.join(self.plugin_dir,'kataster-import','kt-vytvor_db')+' | '+'psql'+ ' ' +db        
+            g_u = os.path.join(self.foldername,'sql','graficke_udaje.sql')
+            p_u = os.path.join(self.foldername,'sql','popisne_udaje.sql')
+            glogdir = os.path.join(self.plugin_dir,'kataster-import','info_g.log')
+            plogdir = os.path.join(self.plugin_dir,'kataster-import','info_p.log')         
+            gslog = os.path.join(self.plugin_dir,'kataster-import','PGOPTIONS="-c search_path=kataster,public" psql kataster -f ' + g_u + '2>' + glogdir)
+            pslog = os.path.join(self.plugin_dir,'kataster-import','PGOPTIONS="-c search_path=kataster,public" psql kataster -f '+ p_u + '2>' + plogdir)        
+            testdir = os.path.join(self.plugin_dir,'kataster-import','katastertools','sql','test-import.sql')                     
+            test = os.path.join(self.plugin_dir,'kataster-import','PGOPTIONS="-c search_path=kataster,public" psql kataster -f ' + testdir)             
+            call(s,shell=True)
+            call(gslog,shell=True)
+            call(pslog,shell=True)
+            call(test,shell=True)
+            self.writeLog()
+        else:
+            self.insertText('Schema already exists.')
+        
+    #funkcia na výpis log do GUI pri tvorbe schemy   
+    def writeLog(self):
+        gfilelog =  os.path.join(self.plugin_dir,'kataster-import','info_g.log')
+        gtext=open(gfilelog).read()
+        pfilelog =  os.path.join(self.plugin_dir,'kataster-import','info_p.log')
+        ptext=open(pfilelog).read()
+        
+        self.insertText('New schema "kataster" and related SQL statements has been created successfully. To see schema in combo box refresh database connection!\n\n')
+        self.insertText('GRAPHICAL DATA LOG:\n**********************\n')
+        for line in gtext.splitlines(): 
+            if len(line)==0:
+                self.insertText('No message.')
+            else:
+                self.insertText(line + os.linesep)
+        self.insertText('\nATTRIBUTIVE DATA LOG:\n************************\n')
+        for line in ptext.splitlines(): 
+            if len(line)==0:
+                self.insertText('No message.')
+            else:
+                self.insertText(line + os.linesep)
+       
     # vymazanie schemy    
     def db_deleteSchema(self):
         index = self.dlg.comboBox_3.currentIndex()   

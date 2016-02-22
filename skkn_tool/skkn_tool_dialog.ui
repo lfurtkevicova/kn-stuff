@@ -185,7 +185,7 @@ Schema</string>
         </widget>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton_4">
+        <widget class="QToolButton" name="buttonCreateSchema">
          <property name="text">
           <string>...</string>
          </property>
