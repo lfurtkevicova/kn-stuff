@@ -102,6 +102,9 @@ class skkn_tool:
         
         # vymazanie schemy
         self.dlg.buttonDelete.clicked.connect(self.db_deleteSchema)
+        
+        # cancel
+        self.dlg.buttonCancel.clicked.connect(self.closelt)
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -277,11 +280,11 @@ class skkn_tool:
         glog = os.path.join(self.plugin_dir,'kataster-import','info_g.log')
         plog = os.path.join(self.plugin_dir,'kataster-import','info_p.log')       
 
-        self.goptions = "PGOPTIONS='-c search_path=%s,public' psql %s -f %s 2>%s" % (db,s,gsql,glog)
+        self.goptions = "PGOPTIONS='-c search_path=%s,public' psql %s -f %s 2>%s" % (s,db,gsql,glog)
         call(self.goptions,shell=True)
         #self.insertText(os.path.join(self.plugin_dir,'kataster-import') + self.goptions)
         
-        self.poptions = "PGOPTIONS='-c search_path=%s,public' psql %s -f %s 2>%s" % (db,s,psql,plog)
+        self.poptions = "PGOPTIONS='-c search_path=%s,public' psql %s -f %s 2>%s" % (s,db,psql,plog)
         call(self.poptions,shell=True)        
         
         self.writeLog()        
@@ -334,7 +337,10 @@ in Slovak republic for people having access to Cadastre data. \nThere is no reas
 other purposes.")
 
     def clear(self): 
-            self.dlg.textEditData.clear()
+        self.dlg.textEditData.clear()
+            
+    def closelt(self):
+        self.dlg.close()
 
     def run(self):
 

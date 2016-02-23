@@ -429,46 +429,17 @@ Schema</string>
         <bold>false</bold>
        </font>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
    </widget>
   </widget>
-  <widget class="QDialogButtonBox" name="button_box">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>510</y>
-     <width>91</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::StrongFocus</enum>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel</set>
-   </property>
-  </widget>
   <widget class="QPushButton" name="buttonAbout">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>210</x>
      <y>510</y>
      <width>91</width>
      <height>25</height>
@@ -492,7 +463,29 @@ Schema</string>
      <normaloff>:/plugins/skkn_tool/icons/about.png</normaloff>:/plugins/skkn_tool/icons/about.png</iconset>
    </property>
   </widget>
-  <widget class="QToolButton" name="buttonClear">
+  <widget class="QPushButton" name="buttonCancel">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>510</y>
+     <width>91</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/plugins/skkn_tool/icons/delete.png</normaloff>:/plugins/skkn_tool/icons/delete.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buttonClear">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -501,60 +494,20 @@ Schema</string>
      <height>25</height>
     </rect>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
    <property name="font">
     <font>
      <pointsize>9</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
     </font>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="text">
     <string>Clear</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/plugins/skkn_tool/icons/clear.png</normaloff>:/plugins/skkn_tool/icons/clear.png</iconset>
+   </property>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>button_box</sender>
-   <signal>accepted()</signal>
-   <receiver>skkn_toolDialogBase</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>button_box</sender>
-   <signal>rejected()</signal>
-   <receiver>skkn_toolDialogBase</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
