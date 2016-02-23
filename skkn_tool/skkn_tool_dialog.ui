@@ -185,7 +185,7 @@ Schema</string>
         </widget>
        </item>
        <item>
-        <widget class="QToolButton" name="buttonCreateSchema">
+        <widget class="QToolButton" name="buttonCreate">
          <property name="text">
           <string>...</string>
          </property>
@@ -215,7 +215,7 @@ to Schema</string>
         </widget>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton_2">
+        <widget class="QToolButton" name="buttonImport">
          <property name="text">
           <string>...</string>
          </property>
