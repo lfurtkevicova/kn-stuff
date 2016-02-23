@@ -5,6 +5,7 @@
         <file>icons/about.png</file>
         <file>icons/import.png</file>
         <file>icons/delete.png</file>
+	<file>icons/clear.png</file>
         <file>icons/database.png</file>
     </qresource>
 </RCC>
