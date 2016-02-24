@@ -177,7 +177,7 @@ class skkn_tool:
         self.buttonConvertName()
         self.dlg.buttonConvert.setEnabled(True)
         self.dlg.progressBarData.setValue(0)
-        #self.dlg.dataBase.setEnabled(False)
+        self.dlg.dataBase.setEnabled(False)
         self.clear()
 
     def convertData(self):
@@ -253,7 +253,7 @@ class skkn_tool:
         if not schema =='kataster': 
             s = os.path.join(self.plugin_dir,'kataster-import','kt-vytvor_db')+' | '+'psql'+ ' ' +db                    
             call(s,shell=True) 
-            self.insertText('New schema "kataster" and related SQL statements has been created successfully. To see schema in combo box refresh database connection!\n\n')
+            self.insertText('New schema "kataster" and related SQL statements has been created successfully.\nTo see schema in combo box refresh database connection!\n\n')
         else:
             self.insertText('Schema already exists.')       
     
@@ -309,7 +309,7 @@ class skkn_tool:
         call(self.toptions,shell=True) 
         tfilelog = os.path.join(self.plugin_dir,'kataster-import','info_t.log')
         ttext=open(tfilelog).read() 
-        self.insertText('TEST LOG:\n**********\n')           
+        self.insertText('TEST LOG related to imported data:\n**********************************\n')           
         if (os.stat(tfilelog).st_size==0 or os.stat(tfilelog).st_size==1):
             self.insertText('Unfortunately, there are no results.')
         else:        
@@ -317,7 +317,7 @@ class skkn_tool:
                 if len(line)==0:
                     continue
                 else:
-                    self.insertText(line + os.linesep) 
+                    self.insertText(line + os.linesep)          
                     
     # vymazanie schemy    
     def db_deleteSchema(self):
