@@ -177,7 +177,6 @@ class skkn_tool:
         self.buttonConvertName()
         self.dlg.buttonConvert.setEnabled(True)
         self.dlg.progressBarData.setValue(0)
-        self.dlg.dataBase.setEnabled(False)
         self.clear()
 
     def convertData(self):
@@ -288,6 +287,10 @@ class skkn_tool:
         self.insertText('\nATTRIBUTIVE DATA LOG:\n************************\n')
         self.logText(pfilelog,ptext)
         
+        # vymazanie LOG pre graficke a popisne data 
+        os.remove(gfilelog)
+        os.remove(pfilelog)
+        
     # testovanie prazdneho log suboru   
     def logText(self,file,opfile):   
         if (os.stat(file).st_size==0 or os.stat(file).st_size==1):
@@ -317,7 +320,9 @@ class skkn_tool:
                 if len(line)==0:
                     continue
                 else:
-                    self.insertText(line + os.linesep)          
+                    self.insertText(line + os.linesep) 
+        # vymazanie TEST LOG 
+        os.remove(tfilelog)
                     
     # vymazanie schemy    
     def db_deleteSchema(self):
