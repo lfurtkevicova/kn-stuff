@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>413</width>
-    <height>545</height>
+    <width>410</width>
+    <height>551</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -33,6 +33,12 @@
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -62,7 +68,7 @@
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="locale">
       <locale language="Slovak" country="Slovakia"/>
@@ -264,6 +270,9 @@ Schema</string>
        <height>141</height>
       </rect>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>Data</string>
      </property>
@@ -391,6 +400,11 @@ Schema</string>
        </item>
       </layout>
      </widget>
+     <zorder>horizontalLayoutWidget</zorder>
+     <zorder>buttonConvert</zorder>
+     <zorder>label_2</zorder>
+     <zorder>horizontalLayoutWidget_2</zorder>
+     <zorder>groupBoxText</zorder>
     </widget>
     <widget class="QGroupBox" name="groupBoxText">
      <property name="geometry">
@@ -401,14 +415,24 @@ Schema</string>
        <height>161</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="contextMenuPolicy">
       <enum>Qt::DefaultContextMenu</enum>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="title">
-      <string/>
+      <string>Outputs</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -417,9 +441,9 @@ Schema</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
+        <y>20</y>
         <width>351</width>
-        <height>141</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="font">
@@ -436,76 +460,86 @@ Schema</string>
     </widget>
    </widget>
   </widget>
-  <widget class="QPushButton" name="buttonAbout">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>510</y>
-     <width>91</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::StrongFocus</enum>
-   </property>
-   <property name="text">
-    <string>About</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>:/plugins/skkn_tool/icons/about.png</normaloff>:/plugins/skkn_tool/icons/about.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonCancel">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>510</y>
-     <width>91</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>:/plugins/skkn_tool/icons/delete.png</normaloff>:/plugins/skkn_tool/icons/delete.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonClear">
+  <widget class="QWidget" name="horizontalLayoutWidget_3">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>510</y>
-     <width>91</width>
-     <height>25</height>
+     <width>391</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Clear</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>:/plugins/skkn_tool/icons/clear.png</normaloff>:/plugins/skkn_tool/icons/clear.png</iconset>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QPushButton" name="buttonAbout">
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="text">
+       <string>About</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/plugins/skkn_tool/icons/about.png</normaloff>:/plugins/skkn_tool/icons/about.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="buttonClear">
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/plugins/skkn_tool/icons/clear.png</normaloff>:/plugins/skkn_tool/icons/clear.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="buttonTest">
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Test</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/plugins/skkn_tool/icons/check.png</normaloff>:/plugins/skkn_tool/icons/check.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="buttonCancel">
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/plugins/skkn_tool/icons/delete.png</normaloff>:/plugins/skkn_tool/icons/delete.png</iconset>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
