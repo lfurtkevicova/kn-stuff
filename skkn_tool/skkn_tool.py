@@ -69,10 +69,9 @@ class skkn_tool:
         self.dlg.buttonConvert.setEnabled(False)        
         self.dlg.lineData.clear()
         self.dlg.buttonData.clicked.connect(self.select_data)
-        
-        
+                
         # database and schema
-        self.dlg.dataBase.setEnabled(False)
+        #self.dlg.dataBase.setEnabled(False)
         self.dlg.comboBox_2.currentIndexChanged.connect(self.db_changed)
 
         # conversation
@@ -102,6 +101,10 @@ class skkn_tool:
         
         # vymazanie schemy
         self.dlg.buttonDelete.clicked.connect(self.db_deleteSchema)
+        
+        # test
+        self.dlg.buttonTest.setEnabled(False)
+        self.dlg.buttonTest.clicked.connect(self.testImport)
         
         # cancel
         self.dlg.buttonCancel.clicked.connect(self.closelt)
@@ -255,39 +258,23 @@ class skkn_tool:
             self.insertText('Schema already exists.')       
     
     def db_importToSchema(self):
-        self.clear()
-#        g_sql = os.path.join(self.foldername,'sql','graficke_udaje.sql')
-#        p_sql = os.path.join(self.foldername,'sql','popisne_udaje.sql')
-#        glogdir = os.path.join(self.plugin_dir,'kataster-import','info_g.log')
-#        plogdir = os.path.join(self.plugin_dir,'kataster-import','info_p.log') 
-#        pshell = 'PGOPTIONS="-c search_path=kataster,public" psql kataster -f %s 2>info_g.log,       
-#        
-#        self.process.start(os.path.join(self.plugin_dir,'kataster-import','kt-sql'),[self.foldername])
-#        
-#        glog = os.path.join(self.plugin_dir,'kataster-import','PGOPTIONS="-c search_path=kataster,public" psql kataster -f ' + g_sql + ' 2>' + glogdir)
-#        plog = os.path.join(self.plugin_dir,'kataster-import','PGOPTIONS="-c search_path=kataster,public" psql kataster -f '+ p_sql + ' 2>' + plogdir)        
-#        test_sql = os.path.join(self.plugin_dir,'kataster-import','katastertools','sql','test-import.sql')      
-#        testdir = os.path.join(self.plugin_dir,'kataster-import','info_test.log')                    
-#        testlog = os.path.join(self.plugin_dir,'kataster-import','PGOPTIONS="-c search_path=kataster,public" psql kataster -f ' + test_sql + ' 2>' + testdir)                        
-#        call(glog,shell=True)
-#        call(plog,shell=True)
-#        call(testlog,shell=True)              
-        #
+        self.clear()  
         db = self.dlg.comboBox_2.currentText() 
         s = self.dlg.comboBox_3.currentText()
         gsql = os.path.join(self.foldername,'sql','graficke_udaje.sql')
-        psql = os.path.join(self.foldername,'sql','popisne_udaje.sql')
+        psql = os.path.join(self.foldername,'sql','popisne_udaje.sql')  
+        
         glog = os.path.join(self.plugin_dir,'kataster-import','info_g.log')
         plog = os.path.join(self.plugin_dir,'kataster-import','info_p.log')       
-
+         
         self.goptions = "PGOPTIONS='-c search_path=%s,public' psql %s -f %s 2>%s" % (s,db,gsql,glog)
         call(self.goptions,shell=True)
         #self.insertText(os.path.join(self.plugin_dir,'kataster-import') + self.goptions)
         
         self.poptions = "PGOPTIONS='-c search_path=%s,public' psql %s -f %s 2>%s" % (s,db,psql,plog)
-        call(self.poptions,shell=True)        
-        
-        self.writeLog()        
+        call(self.poptions,shell=True)            
+        self.writeLog()  
+        self.dlg.buttonTest.setEnabled(True)
          
     #funkcia na výpis log do GUI pri tvorbe schemy   
     def writeLog(self):
@@ -301,7 +288,6 @@ class skkn_tool:
         self.insertText('\nATTRIBUTIVE DATA LOG:\n************************\n')
         self.logText(pfilelog,ptext)
         
-        
     # testovanie prazdneho log suboru   
     def logText(self,file,opfile):   
         if (os.stat(file).st_size==0 or os.stat(file).st_size==1):
@@ -313,6 +299,26 @@ class skkn_tool:
                 else:
                     self.insertText(line + os.linesep)    
        
+    def testImport(self):
+        self.clear()                  
+        db = self.dlg.comboBox_2.currentText() 
+        s = self.dlg.comboBox_3.currentText()
+        tsql = os.path.join(self.plugin_dir,'kataster-import','katastertools','sql','test-import.sql')
+        tlog = os.path.join(self.plugin_dir,'kataster-import','info_t.log')
+        self.toptions = "PGOPTIONS='-c search_path=%s,public' psql %s -f %s > %s 2>&1" % (s,db,tsql,tlog)
+        call(self.toptions,shell=True) 
+        tfilelog = os.path.join(self.plugin_dir,'kataster-import','info_t.log')
+        ttext=open(tfilelog).read() 
+        self.insertText('TEST LOG:\n**********\n')           
+        if (os.stat(tfilelog).st_size==0 or os.stat(tfilelog).st_size==1):
+            self.insertText('Unfortunately, there are no results.')
+        else:        
+            for line in ttext.splitlines():                 
+                if len(line)==0:
+                    continue
+                else:
+                    self.insertText(line + os.linesep) 
+                    
     # vymazanie schemy    
     def db_deleteSchema(self):
         # vycistenie dialógu so správami
