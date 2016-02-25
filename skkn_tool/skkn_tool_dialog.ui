@@ -354,7 +354,7 @@ Schema</string>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;Directory with  '&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;dbf&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;'  and  '&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;vgi&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;'  subfolders.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;Directory with '&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;SPI&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;' &lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;and '&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; font-style:italic;&quot;&gt;VGI&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;' su&lt;/span&gt;&lt;span style=&quot; font-size:8pt; font-style:italic;&quot;&gt;bfolders.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget_2">
@@ -400,11 +400,6 @@ Schema</string>
        </item>
       </layout>
      </widget>
-     <zorder>horizontalLayoutWidget</zorder>
-     <zorder>buttonConvert</zorder>
-     <zorder>label_2</zorder>
-     <zorder>horizontalLayoutWidget_2</zorder>
-     <zorder>groupBoxText</zorder>
     </widget>
     <widget class="QGroupBox" name="groupBoxText">
      <property name="geometry">

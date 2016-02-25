@@ -71,7 +71,7 @@ class skkn_tool:
         self.dlg.buttonData.clicked.connect(self.select_data)
                 
         # database and schema
-        #self.dlg.dataBase.setEnabled(False)
+        self.dlg.dataBase.setEnabled(False)
         self.dlg.comboBox_2.currentIndexChanged.connect(self.db_changed)
 
         # conversation
