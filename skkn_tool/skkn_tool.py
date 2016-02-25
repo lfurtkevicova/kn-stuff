@@ -172,7 +172,7 @@ class skkn_tool:
         del self.toolbar
 
     def select_data(self):
-        self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","/home/ludka/git/kataster-import-fork/data")
+        self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","/home")
         self.dlg.lineData.setText(self.foldername)
         self.buttonConvertName()
         self.dlg.buttonConvert.setEnabled(True)
