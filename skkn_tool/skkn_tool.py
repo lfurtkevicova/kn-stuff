@@ -172,7 +172,7 @@ class skkn_tool:
         del self.toolbar
 
     def select_data(self):
-        self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder (*.vgi data, *.dbf data, outputs)","/home")
+        self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder with SPI and VGI data)","/home")
         self.dlg.lineData.setText(self.foldername)
         self.buttonConvertName()
         self.dlg.buttonConvert.setEnabled(True)
@@ -252,7 +252,7 @@ class skkn_tool:
         if not schema =='kataster': 
             s = os.path.join(self.plugin_dir,'kataster-import','kt-vytvor_db')+' | '+'psql'+ ' ' +db                    
             call(s,shell=True) 
-            self.insertText('New schema "kataster" and related SQL statements has been created successfully.\nTo see schema in combo box refresh database connection!\n\n')
+            self.insertText('New schema and related SQL statements have been created successfully.\nTo see schema in combo box refresh database connection!\n\n')
         else:
             self.insertText('Schema already exists.')       
     
