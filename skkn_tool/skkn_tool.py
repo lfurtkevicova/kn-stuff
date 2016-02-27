@@ -31,6 +31,7 @@ from db_manager.db_plugins import createDbPlugin
 from db_manager.db_plugins.plugin import DbError
 from subprocess import call
 import sys, time
+import re
 
 
 class skkn_tool:
@@ -172,7 +173,10 @@ class skkn_tool:
         del self.toolbar
 
     def select_data(self):
-        self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder with SPI and VGI data)","/home")
+        self.foldername = QFileDialog.getExistingDirectory(self.dlg, "Select data folder with SPI and VGI data","/home")
+        # nahradenie v pripade medzery        
+        # self.foldername = re.sub('\s+', '', self.foldername)  
+        # self.foldername = os.rename(self.foldername,self.foldername)
         self.dlg.lineData.setText(self.foldername)
         self.buttonConvertName()
         self.dlg.buttonConvert.setEnabled(True)
